@@ -1,0 +1,40 @@
+﻿@page
+@model ITHS_CMSProject.Pages.BannerImage.IndexModel
+@{
+    Layout = "Admin_Layout";
+}
+
+<h1>Banner</h1>
+
+<p><a asp-page="Create">Add a new Banner</a></p>
+
+<table class="table">
+    <thead class="text-nowrap">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BannerImage[0].ImageURL)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.BannerImage)
+        {
+            <tr>
+                <td>
+                    <img src="@item.ImageURL" width="50" height="50" />
+                </td>
+                <td class="text-nowrap">
+                    <a asp-page="./Edit" asp-route-id="@item.ImageId">Edit</a> |
+                    @*<a asp-page="./Details" asp-route-id="@item.ProductId">Details</a> |*@
+                    <a asp-page="./Delete" asp-route-id="@item.ImageId">Delete</a>
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</table>

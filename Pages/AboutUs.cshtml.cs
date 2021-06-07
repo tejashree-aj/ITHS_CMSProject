@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ITHS_CMSProject.Pages.Admin
-
+namespace ITHS_CMSProject.Pages
 {
-    public class IndexModel : PageModel
+    public class AboutUsModel : PageModel
     {
         public void OnGet()
         {

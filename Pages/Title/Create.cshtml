@@ -1,0 +1,34 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Title.CreateModel
+@{
+    Layout = "Admin_Layout";
+}
+
+<h1>Create a new Title</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title.Title" class="control-label"></label>
+                <input asp-for="Title.Title" class="form-control" />
+                <span asp-validation-for="Title.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title.ShortDescription" class="control-label"></label>
+                <input asp-for="Title.ShortDescription" class="form-control" />
+                <span asp-validation-for="Title.ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Skapa" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

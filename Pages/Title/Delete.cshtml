@@ -1,0 +1,25 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Title.DeleteModel
+@{
+    Layout = "Admin_Layout";
+}
+
+<h4>Are you sure you want to Delete?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayTextFor(model => model.Title.Title)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayTextFor(model => model.Title.ShortDescription)
+        </dt>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Title.TitleId" />
+        <input type="submit" value="Radera" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back</a>
+    </form>
+</div>
+

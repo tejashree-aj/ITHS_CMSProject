@@ -4,7 +4,35 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<header class="d-flex flex-wrap justify-content-center">
+
+    <div>
+        @foreach (var item in Model.Title)
+        {
+            <div>
+                <h1 class="card-title">@item.Title</h1>
+            </div>
+        }
+
+    </div>
+
+</header>
+
+<div class="container " id="banner-image">
+
+    <div class="d-flex justify-content-center">
+
+        <a href="/index"><img src="~/Images/travel.jpg" class="img-fluid" alt="Responsive image" /></a>
+    </div>
+
+</div>
+
+<div class="container">
+    @foreach (var item in Model.Title)
+    {
+        <div>
+            <p class="intro">@item.ShortDescription</p>
+        </div>
+    }
+
 </div>

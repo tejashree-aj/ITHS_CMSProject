@@ -4,5 +4,24 @@
     Layout = "Admin_Layout";
 }
 
-<h1>Settings</h1>
+<div class="d-flex flex-wrap justify-content-center">
+    <h1 class="align-content-center">Settings</h1>
 
+    <a asp-page="/Title/Index"> Title</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    @*<p class="align-content-lg-center">
+            <a asp-page="~/Admin/Index">Title</a>
+        </p>*@
+    <a asp-page="/BannerImage/Index"> Banner</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    @*<p>
+        <a asp-page="~/BannerImage/Index">Banner</a>
+    </p>*@
+</div>
