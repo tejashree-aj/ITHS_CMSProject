@@ -37,7 +37,7 @@ Azure
 
 ### Installation 
 Follow the below steps:
-
+- SQL Script i available in SQLScripts folder. Once executed in database, then update database connection string in appsettings.json file.
 - All the blog images will be saved in this folder - "BlogImagePath": "images\\BlogImages\\"
 
 ### EndPoint

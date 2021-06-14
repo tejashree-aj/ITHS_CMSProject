@@ -12,6 +12,17 @@ for details on configuring this project to bundle and minify static web assets. 
   color: #0366d6;
 }*/
 
+.cookie-law-info-bar {
+    bottom: 50px;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    font-size: 1.5em;
+    /* font-weight: bold; */
+    padding: 30px;
+    margin-top: 3%;
+}
+
 .sidenav {
     height: 100%;
     width: 10%;
