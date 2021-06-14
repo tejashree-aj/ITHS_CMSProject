@@ -35,8 +35,8 @@
                 @Html.DisplayFor(modelItem => item.PageId)
             </td>
             <td>
-                <a asp-page="./EditContent" asp-route-id="@item.PageContentId">Edit</a> |
-                <a asp-page="./Delete" asp-route-id="@item.PageContentId">Delete</a>
+                <a asp-page="./EditContent" asp-route-id="@item.PageContentId">Edit</a> 
+                @*<a asp-page="./Delete" asp-route-id="@item.PageContentId">Delete</a>*@
             </td>
         </tr>
         }

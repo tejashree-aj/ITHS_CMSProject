@@ -2,10 +2,32 @@
 
 #### _ITHS_CMSProject is a Content Management System Project._
 
-### Project framework version -
+### Time Overview
+Start Date - 17/05/20121
+End Date - 16/05/2012
+
+### Technologies Required
+##### Technical platform:
+Windows
+##### Server solution:
+IIS
+##### Project framework version :
 - ITHS_CMSProject : .NET 5.0
 - CMS_APIProject : .NET 5.0
 - DataAccess_CMSProject : .NETCore 3.1
+##### List of library / Nuget packages
+- Microsoft.AspNet.MVC
+- Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
+- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+- Microsoft.AspNetCore.Identity.UI
+- Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+- Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.EntityFrameworkCore.Tools
+- Microsoft.VisualStudio.Web.CodeGeneration.Design
+##### Database solution
+MS SQL
+#####  Server environment
+Azure
 
 ### Features
 - The project has microservices based implementation.
@@ -15,7 +37,18 @@
 
 ### Installation 
 Follow the below steps:
-- Initially execute the command in Package manager Console : Add-migration create and update-database in ITHS_CMSProject to create the authorization and authentication tables. 
-- Again execute the command in Package manager Console : Add-migration initialcreate and update-database in CMS_APIProject and DataAccess_CMSProject to create the project tables.
+
 - All the blog images will be saved in this folder - "BlogImagePath": "images\\BlogImages\\"
+
+### EndPoint
+API Project Swagger Link - 
+
+### Functionality
+#####Login:
+UserName - admin@cms.se
+Password - Admin@123
+#####Admin Page : 
+Its a content management system project, in the admin section one can add content, edit or delete, which is displayed on the website.
+
+
 
