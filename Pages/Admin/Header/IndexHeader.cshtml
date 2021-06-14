@@ -1,0 +1,35 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Admin.Header.IndexHeaderModel
+@{
+    Layout = "Admin_Layout";
+}
+
+<h2> Header </h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Header[0].HtmlText)
+            </th>
+           
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Header)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HtmlText)
+                </td>
+                
+                <td>
+                    <a asp-page="./EditHeader" asp-route-id="@item.HeaderId">Edit</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>

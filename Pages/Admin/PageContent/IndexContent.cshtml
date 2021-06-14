@@ -1,0 +1,44 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Admin.PageContent.IndexContentModel
+@{
+    ViewData["Title"] = "IndexPageContent";
+    Layout = "~/Pages/Shared/Admin_Layout.cshtml";
+}
+
+<h1>Page Content</h1>
+<br />
+
+<p>
+    <a asp-page="CreateContent">Create New Page Content</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PageContent[0].Title)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.PageContent[0].PageId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PageContent)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.PageId)
+            </td>
+            <td>
+                <a asp-page="./EditContent" asp-route-id="@item.PageContentId">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PageContentId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

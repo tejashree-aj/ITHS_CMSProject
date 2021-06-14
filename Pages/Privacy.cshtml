@@ -1,8 +1,23 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = Model.PageContentView.Title;
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="about-top">
+    <div class="cc-center">
+        <div class="text-container">
+            <h1 class="h1">@Model.PageContentView.Title</h1>
+        </div>
+    </div>
+</div>
+
+<div class="about-blog">
+    <div class="cc-center">
+        <div class="text-container">
+            <div class="section-title-big">
+                @Html.Raw($"<div>{Model.PageContentView.Content}</div>")
+            </div>
+        </div>
+    </div>
+</div>

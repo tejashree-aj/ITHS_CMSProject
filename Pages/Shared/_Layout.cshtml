@@ -7,33 +7,71 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/bootstrap-social.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</head>
-<body>
-    <div>
-           <partial name="_Navbar.cshtml"/>
-    </div>
-
-   
-
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - ITHS_CMSProject - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Tenor+Sans:regular%7CSource+Serif+Pro:regular,700%7CLibre+Franklin:regular,600" media="all">
+    <script type="text/javascript">WebFont.load({ google: { families: ["Tenor Sans:regular", "Source Serif Pro:regular,700", "Libre Franklin:regular,600"] } });</script>
+
+    <style>
+        body {
+            -moz-font-feature-settings: "liga"on;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga"on;
+            text-rendering: optimizeLegibility;
+        }
+    </style>
+</head>
+<body>
+
+    <header style="position: sticky; top: 0; z-index: 1071;">
+        
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="d-flex justify-content-between" style=" margin-left: 13% !important; width: 100%; !important; width: 100%; !important;">
+                <partial name="_CookieConsentPartial.cshtml" />
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                    <strong>@Model.HeaderView.HtmlText</strong>
+                </a>
+
+                <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <a href="/Admin/login" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+
+    <div class="container-fluid no-padding">
+        <div class="row">
+            <div class="col-1">
+                <partial name="_Navbar.cshtml" model="Model.Pages" />
+            </div>
+
+        
+
+            <div class="col-11">@RenderBody()</div>
+
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-11 align-self-end">
+                <footer class="border-top footer text-muted">
+                    <div class="container">
+                        @Model.FooterView.HtmlText - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+    </div>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

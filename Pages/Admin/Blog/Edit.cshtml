@@ -1,0 +1,52 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Admin.Blog.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/Admin_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Blog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form method="post" enctype="multipart/form-data" id="createForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Blog.BlogId" />
+            <div class="form-group">
+                <label asp-for="Blog.Title" class="control-label"></label>
+                <input asp-for="Blog.Title" class="form-control" />
+                <span asp-validation-for="Blog.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Author" class="control-label"></label>
+                <input asp-for="Blog.Author" class="form-control" />
+                <span asp-validation-for="Blog.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Content" class="control-label"></label>
+                <textarea asp-for="Blog.Content" class="form-control" id="editor"></textarea>
+                <span asp-validation-for="Blog.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.ImageURL" class="control-label"></label>
+                <img src="@Url.Content(Model.Blog.ImageURL)" alt="Image" width="100" height="100" />
+                <input type="file" id="fileUpload" name="files" />
+                <span asp-validation-for="Blog.ImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

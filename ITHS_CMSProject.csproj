@@ -6,10 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Identity\IdentityHostingStartup.cs" />
+    <Compile Remove="Pages\Admin\Identity\Pages\**" />
+    <Content Remove="Pages\Admin\Identity\Pages\**" />
+    <EmbeddedResource Remove="Pages\Admin\Identity\Pages\**" />
+    <None Remove="Pages\Admin\Identity\Pages\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Admin\Identity\IdentityHostingStartup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.6" />
@@ -20,6 +32,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
   </ItemGroup>
 
 </Project>

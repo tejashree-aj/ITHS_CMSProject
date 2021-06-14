@@ -1,0 +1,35 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Admin.Footer.IndexFooterModel
+@{
+    Layout = "Admin_Layout";
+}
+
+<h2> Footer </h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Footer[0].HtmlText)
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Footer)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HtmlText)
+                </td>
+
+                <td>
+                    <a asp-page="./EditFooter" asp-route-id="@item.FooterId">Edit</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>

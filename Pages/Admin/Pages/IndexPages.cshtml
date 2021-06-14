@@ -1,0 +1,45 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Admin.Pages.IndexPagesModel
+@{
+    Layout = "Admin_Layout";
+}
+
+<h2> Page List </h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pages[0].PageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pages[0].PageLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pages[0].IsDeleted)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Pages)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageLink)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.IsDeleted, new { @disabled = "disabled" })
+            </td>
+            <td>
+                <a asp-page="./EditPages" asp-route-id="@item.PageId">Edit</a> 
+            </td>
+        </tr>
+
+        }
+    </tbody>
+
+</table>

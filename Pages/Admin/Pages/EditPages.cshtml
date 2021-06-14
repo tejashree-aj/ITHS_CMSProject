@@ -1,0 +1,46 @@
+﻿@page
+@model ITHS_CMSProject.Pages.Admin.Pages.EditPagesModel
+@{
+}
+
+
+<h1>Pages</h1>
+
+<h4>Update Page Link or Page Name</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PageView.PageId" />
+            <div class="form-group">
+                <label asp-for="PageView.PageName" class="control-label"></label>
+                <input asp-for="PageView.PageName" class="form-control" />
+                <span asp-validation-for="PageView.PageName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="PageLink">Page Links:</label>
+                @Html.DropDownListFor(x => x.PageView.PageLink, new SelectList(Model.PageLinks), "Select PageLink")
+                @Html.ValidationMessageFor(x => x.PageView.PageLink, "", new { @class = "text-danger" })
+                <span asp-validation-for="PageView.PageLink" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="PageLink">Is Deleted: </label>
+                @Html.CheckBoxFor(x => x.PageView.IsDeleted)                
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./IndexPages">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

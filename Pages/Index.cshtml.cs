@@ -1,5 +1,5 @@
-﻿using ITHS_CMSProject.Areas.Identity.Data;
-using ITHS_CMSProject.ModelClasses;
+﻿using ITHS_CMSProject.ModelClasses;
+using ITHS_CMSProject.Pages.Admin.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,9 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
@@ -29,9 +27,16 @@ namespace ITHS_CMSProject.Pages
             _userManager = userManager;
         }
 
-        //[BindProperty]
-        public IList<TitleView> Title { get; set; }
+        [BindProperty]
 
+        public IList<PageView> Pages { get; set; }
+        public IList<PageContentView> Title { get; set; }
+        public IList<BlogView> Blogs { get; set; }
+
+        public HeaderView HeaderView { get; set; }
+        public FooterView FooterView { get; set; }
+
+        public BlogView FeatureBlog { get; set; }
 
         /// <summary>  
         /// GET: /Index  
@@ -39,19 +44,25 @@ namespace ITHS_CMSProject.Pages
         /// <returns>Returns - Appropriate page </returns>  
         public async Task<IActionResult> OnGetAsync()
         {
-            var token = HttpContext.Request.Cookies["access_token"];
-            if (string.IsNullOrEmpty(token))
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
             using HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            //Title = await httpClient.GetFromJsonAsync<IList<TitleView>>($"{_configuration.GetValue<string>("APIEndpoint")}api/title");
+            Pages = await httpClient.GetFromJsonAsync<IList<PageView>>($"{_configuration.GetValue<string>("APIEndpoint")}api/pages");
+            HeaderView = await httpClient.GetFromJsonAsync<HeaderView>($"{_configuration.GetValue<string>("APIEndpoint")}api/header/1");
+            FooterView = await httpClient.GetFromJsonAsync<FooterView>($"{_configuration.GetValue<string>("APIEndpoint")}api/footer/1");
+            Blogs = await httpClient.GetFromJsonAsync<IList<BlogView>>($"{_configuration.GetValue<string>("APIEndpoint")}api/Blog");
 
-            Title = await httpClient.GetFromJsonAsync<IList<TitleView>>($"{_configuration.GetValue<string>("APIEndpoint")}api/admin");
+            var randomBlogId = new Random().Next(0, Blogs.Count - 1);
+            FeatureBlog = new BlogView
+            {
+                Author = Blogs[randomBlogId].Author,
+                BlogId = Blogs[randomBlogId].BlogId,
+                Content = Blogs[randomBlogId].Content,
+                ImageURL = Blogs[randomBlogId].ImageURL,
+                Title = Blogs[randomBlogId].Title
+            };
 
+            Blogs.RemoveAt(randomBlogId);
             return Page();
-
-
         }
     }
 }

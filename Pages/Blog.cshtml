@@ -1,0 +1,23 @@
+﻿@page
+@model ITHS_CMSProject.Pages.BlogModel
+@{
+    ViewData["Title"] = Model.BlogView.Title;
+}
+
+<div class="about-top">
+    <div class="cc-center">
+        <div class="text-container">
+            <h1 class="h1">@Model.BlogView.Title</h1>
+        </div>
+    </div>
+</div>
+
+<div class="about-blog">
+    <div class="cc-center">
+        <div class="text-container">
+            <div class="section-title-big">
+                @Html.Raw($"<div>{Model.BlogView.Content}</div>")
+            </div>
+        </div>
+    </div>
+</div>

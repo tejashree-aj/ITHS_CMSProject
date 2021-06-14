@@ -4,24 +4,48 @@
     Layout = "Admin_Layout";
 }
 
-<div class="d-flex flex-wrap justify-content-center">
-    <h1 class="align-content-center">Settings</h1>
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-lg-start">
+        <h1 class="align-content-center">Settings</h1><br />
+    </div>
 
-    <a asp-page="/Title/Index"> Title</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    @*<p class="align-content-lg-center">
-            <a asp-page="~/Admin/Index">Title</a>
-        </p>*@
-    <a asp-page="/BannerImage/Index"> Banner</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div>
+        <a asp-page="/Admin/Pages/indexpages"> Pages</a>
+        <button class="btn" type="button" data-toggle="collapse" data-target="collapse" aria-controls=""
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 
-    @*<p>
-        <a asp-page="~/BannerImage/Index">Banner</a>
-    </p>*@
+    <div>
+        <a asp-page="/Admin/PageContent/IndexContent"> Page Content</a>
+        <button class="btn" type="button" data-toggle="collapse" data-target="collapse" aria-controls=""
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div>
+        <a asp-page="/Admin/Blog/index"> Blog</a>
+        <button class="btn" type="button" data-toggle="collapse" data-target="collapse" aria-controls=""
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div>
+        <a asp-page="/Admin/Header/IndexHeader"> Header</a>
+        <button class="btn" type="button" data-toggle="collapse" data-target="collapse" aria-controls=""
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div>
+        <a asp-page="/Admin/Footer/IndexFooter"> Footer</a>
+        <button class="btn" type="button" data-toggle="collapse" data-target="collapse" aria-controls=""
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
 </div>

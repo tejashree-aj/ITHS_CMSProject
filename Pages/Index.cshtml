@@ -4,35 +4,64 @@
     ViewData["Title"] = "Home page";
 }
 
-<header class="d-flex flex-wrap justify-content-center">
+<div class="top-post">
+    <div class="container">
+        <div class="posts-wrapper cc-top-post">
+            <div class="w-dyn-list">
+                <div role="list" class="w-dyn-items">
+                    <div role="listitem" class="top-post-item w-dyn-item">
+                        <a data-w-id="f584d68a-6baf-e0a3-5c39-421b1f2647d2"
+                           style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(1deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;"
+                           href="/Blog?id=@Model.FeatureBlog.BlogId" 
+                           class="top-post-image w-inline-block">
+                            <img src="@Model.FeatureBlog.ImageURL" class="post-image" alt="" />
+                        </a>
+                        <div class="top-post-text">
+                            <a href="/Blog?id=@Model.FeatureBlog.BlogId" class="top-post-link-block w-inline-block">
+                                <h2 class="h2">@Model.FeatureBlog.Title</h2>
+                            </a>
 
-    <div>
-        @foreach (var item in Model.Title)
-        {
-            <div>
-                <h1 class="card-title">@item.Title</h1>
+                            @Html.Raw($"<div class='post-short-text limittext'>{Model.FeatureBlog.Content}</div>")
+
+                            <div class="post-author-text">
+                                <div class="post-author cc-top-margin">By</div><div class="post-author">
+                                    @Model.FeatureBlog.Author
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        }
-
+        </div>
     </div>
-
-</header>
-
-<div class="container " id="banner-image">
-
-    <div class="d-flex justify-content-center">
-
-        <a href="/index"><img src="~/Images/travel.jpg" class="img-fluid" alt="Responsive image" /></a>
-    </div>
-
 </div>
 
-<div class="container">
-    @foreach (var item in Model.Title)
-    {
-        <div>
-            <p class="intro">@item.ShortDescription</p>
+<div class="_3-posts">
+    <div class="posts-inside">
+        <div class="posts-wrapper">
+            <div class="posts-collection-list-wrapper w-dyn-list">
+                <div data-w-id="56790bf8-d103-7ca9-e653-899a2f1bc2cb" style="opacity: 1;" role="list"
+                     class="posts-collection-list w-dyn-items w-row">
+                    @foreach (var blog in Model.Blogs)
+                    {
+                        <div role="listitem" class="_3-collection-item w-dyn-item w-col w-col-4">
+                            <a href="/Blog?id=@blog.BlogId"
+                               class="posts-image w-inline-block">
+                                <img src="@blog.ImageURL" class="sub-post-image" alt="">
+                            </a>
+                            <div class="post-info-text">
+                                <a href="/Blog?id=@blog.BlogId" class="post-title w-inline-block">
+                                    <h3 class="h3">@blog.Title</h3>
+                                </a>
+                                <div class="post-author-text cc-small-thumbnail">
+                                    <div class="post-author cc-top-margin">By</div>
+                                    <a href="#" class="post-author">@blog.Author</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
-    }
-
+    </div>
 </div>

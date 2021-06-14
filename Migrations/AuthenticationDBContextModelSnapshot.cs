@@ -19,7 +19,7 @@ namespace ITHS_CMSProject.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ITHS_CMSProject.Areas.Identity.Data.UserInformation", b =>
+            modelBuilder.Entity("ITHS_CMSProject.Pages.Admin.Identity.Data.UserInformation", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -237,7 +237,7 @@ namespace ITHS_CMSProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ITHS_CMSProject.Areas.Identity.Data.UserInformation", null)
+                    b.HasOne("ITHS_CMSProject.Pages.Admin.Identity.Data.UserInformation", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -246,7 +246,7 @@ namespace ITHS_CMSProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ITHS_CMSProject.Areas.Identity.Data.UserInformation", null)
+                    b.HasOne("ITHS_CMSProject.Pages.Admin.Identity.Data.UserInformation", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -261,7 +261,7 @@ namespace ITHS_CMSProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ITHS_CMSProject.Areas.Identity.Data.UserInformation", null)
+                    b.HasOne("ITHS_CMSProject.Pages.Admin.Identity.Data.UserInformation", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -270,7 +270,7 @@ namespace ITHS_CMSProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ITHS_CMSProject.Areas.Identity.Data.UserInformation", null)
+                    b.HasOne("ITHS_CMSProject.Pages.Admin.Identity.Data.UserInformation", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
