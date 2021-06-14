@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\**" />
     <Compile Remove="Pages\Admin\Identity\Pages\**" />
+    <Content Remove="Areas\**" />
     <Content Remove="Pages\Admin\Identity\Pages\**" />
+    <EmbeddedResource Remove="Areas\**" />
     <EmbeddedResource Remove="Pages\Admin\Identity\Pages\**" />
+    <None Remove="Areas\**" />
     <None Remove="Pages\Admin\Identity\Pages\**" />
   </ItemGroup>
 
@@ -32,10 +36,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\" />
   </ItemGroup>
 
 </Project>
