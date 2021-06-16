@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 namespace CMS_APIProject.Controllers
 {
 
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class FooterController : Controller
@@ -24,6 +23,7 @@ namespace CMS_APIProject.Controllers
         }
         // GET: api/Footer
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<FooterView>>> GetFooter()
         {
             var header = await _context.Footers.Select(f => new FooterView
@@ -37,6 +37,7 @@ namespace CMS_APIProject.Controllers
 
         // GET: api/Footer/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<FooterView>> GetHeader(int id)
         {
             var footerView = await _context.Footers.Where(x => x.FooterId == id).Select(footer =>
@@ -52,7 +53,7 @@ namespace CMS_APIProject.Controllers
         }
 
         // POST: api/Footer
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<Header>> PostFooter(FooterView footerView)
         {
@@ -67,7 +68,7 @@ namespace CMS_APIProject.Controllers
         }
 
         // PUT: api/Footer/5
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFooter(int id, FooterView footerView)
         {

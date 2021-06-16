@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace CMS_APIProject.Controllers
 {
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class PageContentController : Controller
@@ -35,7 +34,7 @@ namespace CMS_APIProject.Controllers
 
         // GET: api/PageContent
         [HttpGet("AdminView")]
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<PageContentView>>> GetAllPageContents()
         {
             var content = await _context.PageContents.Include(p => p.Pages).Select(p => new PageContentView(p, false)).ToListAsync();
@@ -47,7 +46,7 @@ namespace CMS_APIProject.Controllers
         // GET: api/PageContent/5
         [HttpGet()]
         [Route("{id:int}")]
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PageContentView>> GetPageContent(int id)
         {
             var contentView = await _context.PageContents.Where(x => x.PageContentId == id).Select(content =>
@@ -64,9 +63,10 @@ namespace CMS_APIProject.Controllers
 
 
         // POST: api/PageContent
-        //[Authorize(Policy = "RequireAdministratorRole")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("Create")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PageContentView>> PostPageContent(PageContentView pageContentView)
         {
             PageContent pageContent = new PageContent
@@ -83,7 +83,7 @@ namespace CMS_APIProject.Controllers
 
 
         // PUT: api/pageContent/5
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPageContent(int id, PageContentView pageContentView)
         {
@@ -129,7 +129,7 @@ namespace CMS_APIProject.Controllers
 
 
         // DELETE: api/pageContent/5
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePageCntent(int id)
         {

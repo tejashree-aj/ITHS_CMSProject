@@ -1,5 +1,6 @@
 using ITHS_CMSProject.ModelClasses;
 using ITHS_CMSProject.Pages.Admin.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace ITHS_CMSProject.Pages.Admin.Footer
 {
+    [Authorize(Roles = "Admin")]
     public class EditFooterModel : PageModel
     {
         private readonly ILogger<EditFooterModel> _logger;

@@ -1,11 +1,27 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+﻿@using Microsoft.AspNetCore.Identity
+@using ITHS_CMSProject.Pages.Admin.Identity.Data 
+
+@inject SignInManager<UserInformation> signInManager
+@inject UserManager<UserInformation> userManager
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
-        <a class="navbar-brand" asp-page="/Admin/Index">Admin</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+        <div>
+            <a class="navbar-brand" asp-page="/Admin/Index">Admin Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @if (signInManager.IsSignedIn(User))
+            {                
+                <a class="navbar-brand" asp-page="/Admin/Logout">Logout</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            }
+        </div>
+        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Back to website</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,6 +29,6 @@
 
     </div>
     <div class="d-inline-flex p-2 flex-row-reverse">
-        <partial name="_LoginPartial" />
+        @*<partial name="_LoginPartial" />*@
     </div>
 </nav>

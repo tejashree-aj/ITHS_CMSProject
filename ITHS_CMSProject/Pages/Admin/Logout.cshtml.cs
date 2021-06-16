@@ -21,22 +21,12 @@ namespace ITHS_CMSProject.Pages.Admin
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-        }
-
-        public async Task<IActionResult> OnPost(string returnUrl = null)
-        {
-            await _signInManager.SignOutAsync();
+            _signInManager.SignOutAsync().GetAwaiter().GetResult();
             _logger.LogInformation("User logged out.");
-            if (returnUrl != null)
-            {
-                return LocalRedirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToPage();
-            }
+            return new RedirectToPageResult("/Admin/Login");
+
         }
     }
 }

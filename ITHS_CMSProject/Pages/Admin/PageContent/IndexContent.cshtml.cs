@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ITHS_CMSProject.Pages.Admin.PageContent
 {
-    [Authorize(Policy = "RequireAdministratorRole")]
+    [Authorize(Roles = "Admin")]
     public class IndexContentModel : PageModel
     {
         private readonly UserManager<UserInformation> _userManager;

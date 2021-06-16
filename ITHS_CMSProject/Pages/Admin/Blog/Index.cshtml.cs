@@ -1,5 +1,6 @@
 ﻿using ITHS_CMSProject.ModelClasses;
 using ITHS_CMSProject.Pages.Admin.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace ITHS_CMSProject.Pages.Admin.Blog
 {
+    [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
         private readonly UserManager<UserInformation> _userManager;

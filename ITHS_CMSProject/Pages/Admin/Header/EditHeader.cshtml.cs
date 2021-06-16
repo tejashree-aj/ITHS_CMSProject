@@ -19,6 +19,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ITHS_CMSProject.Pages.Admin.Header
 {
+    [Authorize(Roles = "Admin")]
     public class EditHeaderModel : PageModel
     {
         private readonly ILogger<EditHeaderModel> _logger;

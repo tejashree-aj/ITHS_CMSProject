@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace CMS_APIProject.Controllers
 {
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class BlogController : ControllerBase
@@ -33,7 +32,7 @@ namespace CMS_APIProject.Controllers
         }
 
         [HttpGet("AdminView")]
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<BlogView>>> GetAllBlogs()
         {
             var blogs = await _context.Blogs.Select(p => new BlogView(p, false)).ToListAsync();
@@ -56,7 +55,7 @@ namespace CMS_APIProject.Controllers
             return blogView;
         }
 
-        //[Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> PostBlog(BlogView blogView)
         {
@@ -75,7 +74,7 @@ namespace CMS_APIProject.Controllers
         }
 
         // GET: api/Blogs/5
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutBlogs(int id, BlogView blog)
         {
@@ -113,7 +112,7 @@ namespace CMS_APIProject.Controllers
             return NoContent();
         }
 
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBlog(int id)

@@ -19,7 +19,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ITHS_CMSProject.Pages.Admin.Pages
 {
-    [Authorize(Policy = "RequireAdministratorRole")]
+    [Authorize(Roles = "Admin")]
     public class EditPagesModel : PageModel
     {
         private readonly ILogger<EditPagesModel> _logger;
@@ -39,9 +39,10 @@ namespace ITHS_CMSProject.Pages.Admin.Pages
 
         private void LoadPageLinks()
         {
-            string pageFolderPath = Path.Combine(_environment.ContentRootPath, "Pages/");
-            PageLinks = Directory.GetFiles(pageFolderPath)
-                .Where(x => x.EndsWith(".cshtml.cs") == true).Select(x => x.Replace(pageFolderPath, "/").Replace(".cshtml.cs", "")).ToList();
+            //string pageFolderPath = Path.Combine(_environment.ContentRootPath, "Pages/");
+            //PageLinks = Directory.GetFiles(pageFolderPath)
+            //    .Where(x => x.EndsWith(".cshtml.cs") == true).Select(x => x.Replace(pageFolderPath, "/").Replace(".cshtml.cs", "")).ToList();
+            PageLinks = PageHelper.GetPageList();
         }
 
         [BindProperty]

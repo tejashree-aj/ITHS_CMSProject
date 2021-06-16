@@ -20,7 +20,7 @@ using ITHS_CMSProject.Pages.Admin.Identity.Data;
 
 namespace ITHS_CMSProject.Pages.Admin
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<UserInformation> _signInManager;

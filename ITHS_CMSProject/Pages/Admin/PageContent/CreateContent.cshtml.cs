@@ -12,10 +12,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ITHS_CMSProject.Pages.Admin.PageContent
 {
-
+    [Authorize(Roles = "Admin")]
     public class CreateContentModel : PageModel
     {
         private readonly UserManager<UserInformation> _userManager;

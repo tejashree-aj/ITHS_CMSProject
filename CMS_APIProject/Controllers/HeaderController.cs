@@ -11,8 +11,6 @@ using System.Threading.Tasks;
 
 namespace CMS_APIProject.Controllers
 {
-
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class HeaderController : Controller
@@ -25,6 +23,7 @@ namespace CMS_APIProject.Controllers
 
         // GET: api/Header
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<HeaderView>>> GetHeader()
         {
             var header = await _context.Headers.Select(h => new HeaderView
@@ -38,6 +37,7 @@ namespace CMS_APIProject.Controllers
 
         // GET: api/Header/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<HeaderView>> GetHeader(int id)
         {
             var headerView = await _context.Headers.Where(x => x.HeaderId == id).Select(header => 
@@ -54,7 +54,7 @@ namespace CMS_APIProject.Controllers
 
 
         // POST: api/Header
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<Header>> PostHeader(HeaderView headerView)
         {
@@ -70,7 +70,7 @@ namespace CMS_APIProject.Controllers
 
 
         // PUT: api/Header/5
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutHeader(int id, HeaderView headerView)
         {

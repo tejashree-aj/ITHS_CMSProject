@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace CMS_APIProject.Controllers
 {
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class PagesController : Controller
@@ -39,7 +38,7 @@ namespace CMS_APIProject.Controllers
         }
 
         [HttpGet("AdminView")]
-        [Authorize(Policy = "RequireAdministratorRole")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<PagesView>>> GetAllPages()
         {
             var pages = await _context.Pages.Select(p => new PagesView
@@ -56,9 +55,10 @@ namespace CMS_APIProject.Controllers
 
 
         // GET: api/Pages/5
-        //[Authorize(Policy = "RequireAdministratorRole")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PagesView>> GetPage(int id)
         {
             var pageView = await _context.Pages.Where(x => x.PageId == id).Select(page =>
@@ -72,8 +72,9 @@ namespace CMS_APIProject.Controllers
             return pageView;
         }
 
-        //[Authorize(Policy = "RequireAdministratorRole")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Pages>> PostProduct(PagesView pageView)
         {
             Pages page = new Pages
@@ -92,8 +93,9 @@ namespace CMS_APIProject.Controllers
 
 
         // GET: api/Pages/5
-        //[Authorize(Policy = "RequireAdministratorRole")]
+        //[Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> PutPages(int id, PagesView pages)
         {
             Pages pageDB = await _context.Pages.FindAsync(id);
@@ -129,7 +131,7 @@ namespace CMS_APIProject.Controllers
             return NoContent();
         }
 
-        
+
         private bool PageExists(int id)
         {
             return _context.Pages.Any(e => e.PageId == id);

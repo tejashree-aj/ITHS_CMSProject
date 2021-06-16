@@ -16,7 +16,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ITHS_CMSProject.Pages.Admin.Pages
 {
-    [Authorize(Policy = "RequireAdministratorRole")]
+    [Authorize(Roles = "Admin")]
     public class CreatePagesModel : PageModel
     {
         private readonly UserManager<UserInformation> _userManager;

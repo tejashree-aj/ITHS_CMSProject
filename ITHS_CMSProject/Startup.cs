@@ -64,7 +64,8 @@ namespace ITHS_CMSProject
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(720);
                 options.LoginPath = new PathString("/Admin/Login");
                 options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
-                options.SlidingExpiration = true;
+                options.SlidingExpiration = true;                
+                options.LogoutPath = $"/Admin/Logout";
             });
         }
 
