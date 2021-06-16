@@ -41,7 +41,7 @@ Follow the below steps:
 - All the blog images will be saved in this folder - "BlogImagePath": "images\\BlogImages\\"
 
 ### EndPoint
-API Project Swagger Link - 
+API Project Swagger Link - https://iths-cms-api.azurewebsites.net/swagger/index.html
 
 ### Functionality
 #####Login:

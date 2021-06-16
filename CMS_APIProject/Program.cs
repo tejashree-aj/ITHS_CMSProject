@@ -16,7 +16,7 @@ namespace CMS_APIProject
         {
             var host = CreateHostBuilder(args).Build();
 
-            var services = host.Services.CreateScope().ServiceProvider;
+            //var services = host.Services.CreateScope().ServiceProvider;
 
             host.Run();
         }
