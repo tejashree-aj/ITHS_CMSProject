@@ -44,6 +44,8 @@ Follow the below steps:
 API Project Swagger Link - https://iths-cms-api.azurewebsites.net/swagger/index.html
 
 ### Functionality
+UI Application Link - https://ithscmsproject.azurewebsites.net/ 
+
 #####Login:
 UserName - admin@cms.se
 Password - Admin@123
